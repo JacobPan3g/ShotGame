@@ -55,9 +55,9 @@
         [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"background-music-aac.caf"];
         
 		CGSize winSize = [CCDirector sharedDirector].winSize;
-        CCSprite *player = [CCSprite spriteWithFile:@"player.png"];
-        player.position = ccp(player.contentSize.width/2, winSize.height/2);
-        [self addChild:player];
+        _player = [CCSprite spriteWithFile:@"player2.png"];
+        _player.position = ccp(_player.contentSize.width/2, winSize.height/2);
+        [self addChild:_player];
         
         [self schedule:@selector(gameLogic:) interval:1.0];
         [self schedule:@selector(update:)];
@@ -121,6 +121,8 @@
 // callback on touch events
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    if (_nextProjectile != nil) return;
+    
     // start the effect music
     [[SimpleAudioEngine sharedEngine] playEffect:@"pew-pew-lei.caf"];
     
@@ -130,33 +132,50 @@
     
     // the initial location of projectile
     CGSize winSize = [[CCDirector sharedDirector] winSize];
-    CCSprite *projectile = [CCSprite spriteWithFile:@"projectile.png"];
-    projectile.position = ccp(20, winSize.height/2);
-    projectile.tag = 2;
-    [_projectiles addObject:projectile];
+    _nextProjectile = [[CCSprite spriteWithFile:@"projectile2.png"] retain];
+    _nextProjectile.position = ccp(20, winSize.height/2);
+    _nextProjectile.tag = 2;
     
-    CGPoint offset = ccpSub(location, projectile.position);
+    CGPoint offset = ccpSub(location, _nextProjectile.position);
     if (offset.x <= 0) return;
-    [self addChild:projectile];
     
     // slove out the realDest Point
-    int realX = winSize.width + (projectile.contentSize.width/2);
+    int realX = winSize.width + (_nextProjectile.contentSize.width/2);
     float ratio = (float)offset.y / (float)offset.x;
-    int realY = (realX * ratio) + projectile.position.y;
+    int realY = (realX * ratio) + _nextProjectile.position.y;
     CGPoint realDest = ccp(realX, realY);
     
     // slove the distance and duration
-    int offRealX = realX - projectile.position.x;
-    int offRealY = realY - projectile.position.y;
+    int offRealX = realX - _nextProjectile.position.x;
+    int offRealY = realY - _nextProjectile.position.y;
     float length = sqrtf((offRealX*offRealX)+(offRealY*offRealY));
     float velocity = 480/1; //480pixels/1sec
     float realMoveDuration = length/velocity;
     
-    [projectile runAction:[CCSequence actions:
+    // rotate
+    float angleRadians = atanf((float)offRealY/(float)offRealX);
+    float angleDegree = CC_RADIANS_TO_DEGREES(angleRadians);
+    float cocosAngle = -1 * angleDegree;
+    float rotateDegreesPerSecind = 180/0.5;
+    float degressDiff = _player.rotation - cocosAngle;
+    float rotateDuration = fabs(degressDiff/rotateDegreesPerSecind);
+    [_player runAction:[CCSequence actions:
+        [CCRotateTo actionWithDuration:rotateDuration angle:cocosAngle],
+        [CCCallBlockN actionWithBlock:^(CCNode *node) {
+            // rotation is finish, show the projectile
+            [self addChild:_nextProjectile];
+            [_projectiles addObject:_nextProjectile];
+            [_nextProjectile release];
+            _nextProjectile = nil;
+        }],
+        nil]];
+    
+    [_nextProjectile runAction:[CCSequence actions:
         [CCMoveTo actionWithDuration:realMoveDuration position:realDest],
         [CCCallBlockN actionWithBlock:^(CCNode *node) {
             [_projectiles removeObject:node];
-    }],
+            [node removeFromParentAndCleanup:YES];
+        }],
         nil]];
 }
 
