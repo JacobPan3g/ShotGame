@@ -20,6 +20,7 @@
 #import "GameOverLayer.h"
 
 #import "Monster.h"
+#import "LevelManager.h"
 
 #pragma mark - HelloWorldLayer
 
@@ -47,7 +48,7 @@
 {
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super's" return value
-	if( (self=[super initWithColor:ccc4(255, 255, 255, 255)]) ) {
+	if( (self=[super initWithColor:[LevelManager sharedInstance].curLevel.backgroundColor]) ) {
         [self setIsTouchEnabled:YES];
         
         _monsters = [[NSMutableArray alloc] init];
@@ -61,7 +62,7 @@
         _player.position = ccp(_player.contentSize.width/2, winSize.height/2);
         [self addChild:_player];
         
-        [self schedule:@selector(gameLogic:) interval:1.0];
+        [self schedule:@selector(gameLogic:) interval:[LevelManager sharedInstance].curLevel.secsPerSpawn];
         [self schedule:@selector(update:)];
 	}
 	return self;

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		167374BB170AFDB3004BD181 /* Level.m in Sources */ = {isa = PBXBuildFile; fileRef = 167374BA170AFDB3004BD181 /* Level.m */; };
+		167374BE170AFEA4004BD181 /* LevelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 167374BD170AFEA4004BD181 /* LevelManager.m */; };
 		1673A060170AA85000295D84 /* player2-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 1673A05C170AA85000295D84 /* player2-hd.png */; };
 		1673A061170AA85000295D84 /* player2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1673A05D170AA85000295D84 /* player2.png */; };
 		1673A062170AA85000295D84 /* projectile2-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 1673A05E170AA85000295D84 /* projectile2-hd.png */; };
@@ -153,6 +155,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		167374B9170AFDB3004BD181 /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
+		167374BA170AFDB3004BD181 /* Level.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Level.m; sourceTree = "<group>"; };
+		167374BC170AFEA4004BD181 /* LevelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelManager.h; sourceTree = "<group>"; };
+		167374BD170AFEA4004BD181 /* LevelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelManager.m; sourceTree = "<group>"; };
 		1673A05C170AA85000295D84 /* player2-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "player2-hd.png"; sourceTree = "<group>"; };
 		1673A05D170AA85000295D84 /* player2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player2.png; sourceTree = "<group>"; };
 		1673A05E170AA85000295D84 /* projectile2-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "projectile2-hd.png"; sourceTree = "<group>"; };
@@ -504,6 +510,10 @@
 				1681029D1709C87D00CC7A55 /* GameOverLayer.m */,
 				1673A069170AB49F00295D84 /* Monster.h */,
 				1673A06A170AB49F00295D84 /* Monster.m */,
+				167374B9170AFDB3004BD181 /* Level.h */,
+				167374BA170AFDB3004BD181 /* Level.m */,
+				167374BC170AFEA4004BD181 /* LevelManager.h */,
+				167374BD170AFEA4004BD181 /* LevelManager.m */,
 				16DC65BF1709809700D2E292 /* Resources */,
 				16DC65D91709809700D2E292 /* libs */,
 				16DC67321709809C00D2E292 /* Supporting Files */,
@@ -1099,6 +1109,8 @@
 				16DC673E1709809C00D2E292 /* IntroLayer.m in Sources */,
 				1681029E1709C87D00CC7A55 /* GameOverLayer.m in Sources */,
 				1673A06B170AB49F00295D84 /* Monster.m in Sources */,
+				167374BB170AFDB3004BD181 /* Level.m in Sources */,
+				167374BE170AFEA4004BD181 /* LevelManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
