@@ -19,6 +19,8 @@
 // the layer of game over
 #import "GameOverLayer.h"
 
+#import "Monster.h"
+
 #pragma mark - HelloWorldLayer
 
 // HelloWorldLayer implementation
@@ -83,7 +85,16 @@
 // add some monsters
 - (void) addMonster
 {
-    CCSprite *monster = [CCSprite spriteWithFile:@"monster.png"];
+    //CCSprite *monster = [CCSprite spriteWithFile:@"monster.png"];
+    Monster *monster = nil;
+    if ( arc4random() % 2 == 0 )
+    {
+        monster = [[[WeakAndFastMonster alloc] init] autorelease];
+    }
+    else
+    {
+        monster = [[[StrongAndSlowMonster alloc] init] autorelease];
+    }
     monster.tag = 1;
     [_monsters addObject:monster];
     
@@ -97,8 +108,8 @@
     monster.position = ccp(winSize.width + monster.contentSize.width/2, actualY);
     [self addChild:monster];
     
-    int minDuration = 2.0;
-    int maxDuration = 4.0;
+    int minDuration = monster.minMoveDuration;
+    int maxDuration = monster.maxMoveDuration;
     int rangeDuration = maxDuration - minDuration;
     int actualDuration = (arc4random() % rangeDuration) + minDuration;
     
@@ -185,20 +196,27 @@
     NSMutableArray *projectilesToDelete = [[NSMutableArray alloc] init];
     for (CCSprite *projectile in _projectiles)
     {
+        BOOL monsterHit = FALSE;
         NSMutableArray *monstersToDelete = [[NSMutableArray alloc] init];
-        for ( CCSprite *monster in _monsters )
+        for ( Monster *monster in _monsters )
         {
             if ( CGRectIntersectsRect(projectile.boundingBox, monster.boundingBox) )
             {
-                [monstersToDelete addObject:monster];
-                
-                // if won and replace the scene
-                _monstersDestroyed++;
-                if (_monstersDestroyed > 30)
+                monsterHit = TRUE;
+                monster.hp--;
+                if ( monster.hp <= 0 )
                 {
-                    CCScene *gameOverScene = [GameOverLayer sceneWithWon:YES];
-                    [[CCDirector sharedDirector] replaceScene:gameOverScene];
+                    [monstersToDelete addObject:monster];
+                    
+                    // if won and replace the scene
+                    _monstersDestroyed++;
+                    if (_monstersDestroyed > 30)
+                    {
+                        CCScene *gameOverScene = [GameOverLayer sceneWithWon:YES];
+                        [[CCDirector sharedDirector] replaceScene:gameOverScene];
+                    }
                 }
+                break;
             }
         }
         for ( CCSprite *monster in monstersToDelete )
@@ -207,10 +225,13 @@
             [self removeChild:monster cleanup:YES];
         }
         
-        if (monstersToDelete.count > 0)
+
+        if (monsterHit)
         {
             [projectilesToDelete addObject:projectile];
+            [[SimpleAudioEngine sharedEngine] playEffect:@"explosion.caf"];
         }
+        
         [monstersToDelete release];
     }
     

@@ -11,6 +11,9 @@
 		1673A061170AA85000295D84 /* player2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1673A05D170AA85000295D84 /* player2.png */; };
 		1673A062170AA85000295D84 /* projectile2-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 1673A05E170AA85000295D84 /* projectile2-hd.png */; };
 		1673A063170AA85000295D84 /* projectile2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1673A05F170AA85000295D84 /* projectile2.png */; };
+		1673A066170AB43800295D84 /* monster2-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 1673A064170AB43800295D84 /* monster2-hd.png */; };
+		1673A067170AB43800295D84 /* monster2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1673A065170AB43800295D84 /* monster2.png */; };
+		1673A06B170AB49F00295D84 /* Monster.m in Sources */ = {isa = PBXBuildFile; fileRef = 1673A06A170AB49F00295D84 /* Monster.m */; };
 		1681029E1709C87D00CC7A55 /* GameOverLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1681029D1709C87D00CC7A55 /* GameOverLayer.m */; };
 		168102A01709C8F500CC7A55 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1681029F1709C8F500CC7A55 /* Default-568h@2x.png */; };
 		16DC65AD1709809700D2E292 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16DC65AC1709809700D2E292 /* QuartzCore.framework */; };
@@ -154,6 +157,11 @@
 		1673A05D170AA85000295D84 /* player2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player2.png; sourceTree = "<group>"; };
 		1673A05E170AA85000295D84 /* projectile2-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "projectile2-hd.png"; sourceTree = "<group>"; };
 		1673A05F170AA85000295D84 /* projectile2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = projectile2.png; sourceTree = "<group>"; };
+		1673A064170AB43800295D84 /* monster2-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "monster2-hd.png"; sourceTree = "<group>"; };
+		1673A065170AB43800295D84 /* monster2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monster2.png; sourceTree = "<group>"; };
+		1673A068170AB44300295D84 /* explosion.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = explosion.caf; sourceTree = "<group>"; };
+		1673A069170AB49F00295D84 /* Monster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Monster.h; sourceTree = "<group>"; };
+		1673A06A170AB49F00295D84 /* Monster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Monster.m; sourceTree = "<group>"; };
 		1681029C1709C87D00CC7A55 /* GameOverLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverLayer.h; sourceTree = "<group>"; };
 		1681029D1709C87D00CC7A55 /* GameOverLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverLayer.m; sourceTree = "<group>"; };
 		1681029F1709C8F500CC7A55 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -494,6 +502,8 @@
 				16DC673D1709809C00D2E292 /* IntroLayer.m */,
 				1681029C1709C87D00CC7A55 /* GameOverLayer.h */,
 				1681029D1709C87D00CC7A55 /* GameOverLayer.m */,
+				1673A069170AB49F00295D84 /* Monster.h */,
+				1673A06A170AB49F00295D84 /* Monster.m */,
 				16DC65BF1709809700D2E292 /* Resources */,
 				16DC65D91709809700D2E292 /* libs */,
 				16DC67321709809C00D2E292 /* Supporting Files */,
@@ -869,6 +879,8 @@
 		16DC6744170981D100D2E292 /* Art */ = {
 			isa = PBXGroup;
 			children = (
+				1673A064170AB43800295D84 /* monster2-hd.png */,
+				1673A065170AB43800295D84 /* monster2.png */,
 				1673A05C170AA85000295D84 /* player2-hd.png */,
 				1673A05D170AA85000295D84 /* player2.png */,
 				1673A05E170AA85000295D84 /* projectile2-hd.png */,
@@ -886,6 +898,7 @@
 		16DC674B170981D100D2E292 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				1673A068170AB44300295D84 /* explosion.caf */,
 				16DC674C170981D100D2E292 /* background-music-aac.caf */,
 				16DC674D170981D100D2E292 /* pew-pew-lei.caf */,
 			);
@@ -968,6 +981,8 @@
 				1673A061170AA85000295D84 /* player2.png in Resources */,
 				1673A062170AA85000295D84 /* projectile2-hd.png in Resources */,
 				1673A063170AA85000295D84 /* projectile2.png in Resources */,
+				1673A066170AB43800295D84 /* monster2-hd.png in Resources */,
+				1673A067170AB43800295D84 /* monster2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1083,6 +1098,7 @@
 				16DC673B1709809C00D2E292 /* HelloWorldLayer.m in Sources */,
 				16DC673E1709809C00D2E292 /* IntroLayer.m in Sources */,
 				1681029E1709C87D00CC7A55 /* GameOverLayer.m in Sources */,
+				1673A06B170AB49F00295D84 /* Monster.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
