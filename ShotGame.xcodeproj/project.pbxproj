@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1681029E1709C87D00CC7A55 /* GameOverLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1681029D1709C87D00CC7A55 /* GameOverLayer.m */; };
+		168102A01709C8F500CC7A55 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1681029F1709C8F500CC7A55 /* Default-568h@2x.png */; };
 		16DC65AD1709809700D2E292 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16DC65AC1709809700D2E292 /* QuartzCore.framework */; };
 		16DC65AF1709809700D2E292 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16DC65AE1709809700D2E292 /* OpenGLES.framework */; };
 		16DC65B11709809700D2E292 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16DC65B01709809700D2E292 /* OpenAL.framework */; };
@@ -144,6 +146,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1681029C1709C87D00CC7A55 /* GameOverLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverLayer.h; sourceTree = "<group>"; };
+		1681029D1709C87D00CC7A55 /* GameOverLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverLayer.m; sourceTree = "<group>"; };
+		1681029F1709C8F500CC7A55 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		16DC65A91709809700D2E292 /* ShotGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShotGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16DC65AC1709809700D2E292 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		16DC65AE1709809700D2E292 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -439,6 +444,7 @@
 		16DC65A01709809600D2E292 = {
 			isa = PBXGroup;
 			children = (
+				1681029F1709C8F500CC7A55 /* Default-568h@2x.png */,
 				16DC65BE1709809700D2E292 /* ShotGame */,
 				16DC65AB1709809700D2E292 /* Frameworks */,
 				16DC65AA1709809700D2E292 /* Products */,
@@ -478,6 +484,8 @@
 				16DC673A1709809C00D2E292 /* HelloWorldLayer.m */,
 				16DC673C1709809C00D2E292 /* IntroLayer.h */,
 				16DC673D1709809C00D2E292 /* IntroLayer.m */,
+				1681029C1709C87D00CC7A55 /* GameOverLayer.h */,
+				1681029D1709C87D00CC7A55 /* GameOverLayer.m */,
 				16DC65BF1709809700D2E292 /* Resources */,
 				16DC65D91709809700D2E292 /* libs */,
 				16DC67321709809C00D2E292 /* Supporting Files */,
@@ -943,6 +951,7 @@
 				16DC6753170981D100D2E292 /* projectile.png in Resources */,
 				16DC6754170981D100D2E292 /* background-music-aac.caf in Resources */,
 				16DC6755170981D100D2E292 /* pew-pew-lei.caf in Resources */,
+				168102A01709C8F500CC7A55 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1057,6 +1066,7 @@
 				16DC67381709809C00D2E292 /* AppDelegate.m in Sources */,
 				16DC673B1709809C00D2E292 /* HelloWorldLayer.m in Sources */,
 				16DC673E1709809C00D2E292 /* IntroLayer.m in Sources */,
+				1681029E1709C87D00CC7A55 /* GameOverLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1160,6 +1170,7 @@
 				16DC67431709809C00D2E292 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

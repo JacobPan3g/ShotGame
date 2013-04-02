@@ -16,6 +16,9 @@
 // add music
 #import "SimpleAudioEngine.h"
 
+// the layer of game over
+#import "GameOverLayer.h"
+
 #pragma mark - HelloWorldLayer
 
 // HelloWorldLayer implementation
@@ -102,6 +105,10 @@
     CCMoveTo *actionMove = [CCMoveTo actionWithDuration:actualDuration position:ccp(-monster.contentSize.width/2, actualY)];
     CCCallBlock *actionMoveDone = [CCCallBlockN actionWithBlock:^(CCNode *node) {
         [_monsters removeObject:node];
+        
+        // lose
+        CCScene *gameOverScene = [GameOverLayer sceneWithWon:NO];
+        [[CCDirector sharedDirector] replaceScene:gameOverScene];
     }];
     [monster runAction:[CCSequence actions:actionMove, actionMoveDone, nil]];
 }
@@ -165,6 +172,14 @@
             if ( CGRectIntersectsRect(projectile.boundingBox, monster.boundingBox) )
             {
                 [monstersToDelete addObject:monster];
+                
+                // if won and replace the scene
+                _monstersDestroyed++;
+                if (_monstersDestroyed > 30)
+                {
+                    CCScene *gameOverScene = [GameOverLayer sceneWithWon:YES];
+                    [[CCDirector sharedDirector] replaceScene:gameOverScene];
+                }
             }
         }
         for ( CCSprite *monster in monstersToDelete )
